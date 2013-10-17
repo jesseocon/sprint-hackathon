@@ -1,0 +1,31 @@
+@import "bootstrap";
+@import "bootstrap-responsive";
+html {
+    background: #333;
+}
+body {
+  padding-top: 110px;
+  background: #333;
+}
+nav.navbar-inner {
+    height:90px;
+}
+header.navbar {
+    background:#333;
+}
+
+/* line 6, ../../app/assets/stylesheets/bootstrap_and_overrides.css.scss */
+h1 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* line 11, ../../app/assets/stylesheets/bootstrap_and_overrides.css.scss */
+.ok {
+  color: green;
+}
+
+/* line 14, ../../app/assets/stylesheets/bootstrap_and_overrides.css.scss */
+.error {
+  color: red;
+}
