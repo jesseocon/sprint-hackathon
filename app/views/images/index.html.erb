@@ -1,0 +1,12 @@
+<div class="row">
+    <% @images.each do |image| %>
+        <div class="col-md-3">
+            <div class="nailthumb-container square-thumb">
+                <%= image_tag(image.pic.url, class: 'item') %>
+            </div>
+        </div>
+    <% end %> 
+</div>
+
+
+

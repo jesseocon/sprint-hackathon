@@ -262,6 +262,7 @@ DEPENDENCIES
   pg (= 0.12.2)
   rails (= 3.2.13)
   rb-fsevent
+  rest-client
   rspec-rails (= 2.11.0)
   sass-rails (= 3.2.5)
   spork

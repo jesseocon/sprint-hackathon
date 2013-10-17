@@ -17,6 +17,7 @@ gem 'multi_xml'
 gem 'oauth2'
 gem 'paperclip'
 gem 'rails', '3.2.13'
+gem 'rest-client'
 gem 'stripe'
 gem 'taps'
 
