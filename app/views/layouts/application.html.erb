@@ -4,6 +4,25 @@
   <title>Hackathon</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <script src="http://js.pusher.com/2.0/pusher.min.js"></script>
+  <script src="http://js.pusher.com/2.0/pusher.min.js"></script>
+  <script type="text/javascript">
+  // If your Heroku application is within the EU region,
+  // uncomment the followling lines
+  // Pusher.host = 'ws-eu.pusher.com';
+  // Pusher.sockjs_host = 'sockjs-eu.pusher.com';
+
+  var pusher = new Pusher('<%= Pusher.key %>'); // uses your APP KEY
+  var channel = pusher.subscribe('test_channel');
+  channel.bind('greet', function(data) {
+    //alert(data.greeting);
+	//$('#ima-grid').append()
+	console.log(data.image_url)
+	var img_cont = "<div class='col-md-3 picto'><div class='nailthumb-container square-thumb'></div><img src='"+data.image_url+"' class='item'</div>"
+	$('#ima-grid').prepend(img_cont)
+	
+  });
+  </script>
   <%= csrf_meta_tags %>
 </head>
 <body style='padding:60px'>
