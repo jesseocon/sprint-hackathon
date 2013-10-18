@@ -12,11 +12,24 @@ class ImagesController < ApplicationController
   
   def create
     @image = Image.new()
-    if params['img_url']
+    if params['img_url'][0..3] == 'data'
+      arr = params['img_url'].split(',')
+      type = arr[0].gsub(/data:/, '').gsub(/;base64/, '')
+      data = arr[1]
+      name = SecureRandom.hex
+      @image.save_photo(name, type, data)
+      if @image.save
+        Pusher['test_channel'].trigger('greet', {
+          :greeting => "Hello there!", image: @image, image_url: @image.pic.url 
+        })
+        respond_with(@image)
+      else
+        respond_with(@image.errors.full_messages)
+      end
+    else params['img_url']
       @image.img_url = params['img_url']
       @image.pic_from_url(@image.img_url)
       if @image.save
-        content_url = CGI.escape(params['img_url'])
 
         Pusher['test_channel'].trigger('greet', {
           :greeting => "Hello there!", image: @image, image_url: @image.pic.url 
@@ -25,9 +38,6 @@ class ImagesController < ApplicationController
       else
         respond_with(@image.errors.full_messages)
       end
-    else 
-      # @image.img_data = params['img_data'] stub out for base64
-      respond_with(@image.errors.full_messages)
     end
   end
   
@@ -71,6 +81,7 @@ end
 
 
 
+#content_url = CGI.escape(params['img_url'])
 
 ### credentials
 
