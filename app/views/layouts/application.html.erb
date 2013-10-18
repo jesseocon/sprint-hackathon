@@ -18,14 +18,16 @@
     //alert(data.greeting);
 	//$('#ima-grid').append()
 	console.log(data.image_url)
-	var img_cont = "<div class='col-md-3 picto'><div class='nailthumb-container square-thumb'></div><img src='"+data.image_url+"' class='item'</div>"
-	$('#ima-grid').prepend(img_cont)
-	
+	var img_cont = "<div class='col-md-3 picto'><div class='nailthumb-container square-thumb'><img src='"+data.image_url+"' class='item' /></div></div>"
+
+	$('#ima-grid').prepend(img_cont);
+	$('.nailthumb-container').nailthumb({width:225,height:225, fitDirection: 'top left', preload:true});
+
   });
   </script>
   <%= csrf_meta_tags %>
 </head>
-<body style='padding:60px'>
+<body style='padding:120px'>
 <%= render 'layouts/header' %>
 <div class='container'>
 	<%= yield %>	
