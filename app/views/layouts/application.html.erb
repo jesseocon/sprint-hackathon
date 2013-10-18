@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Hackathon</title>
+  <title>CatchIt</title>
+  <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <script src="http://js.pusher.com/2.0/pusher.min.js"></script>
@@ -18,10 +20,10 @@
     //alert(data.greeting);
 	//$('#ima-grid').append()
 	console.log(data.image_url)
-	var img_cont = "<div class='col-md-3 picto'><div class='nailthumb-container square-thumb'><img src='"+data.image_url+"' class='item' /></div></div>"
-
+	var img_cont = "<div class='col-md-3 picto'><div class='nailthumb-container square-thumb' id='"+data.image.id+"'><img src='"+data.image_url+"' class='item' /></div></div>"
+	var cont_id = '#'+ data.image.id.toString();
 	$('#ima-grid').prepend(img_cont);
-	$('.nailthumb-container').nailthumb({width:225,height:225, fitDirection: 'top left', preload:true});
+	$(cont_id).nailthumb({width:225,height:225, fitDirection: 'top left', preload:true});
 
   });
   </script>
