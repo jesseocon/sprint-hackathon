@@ -16,10 +16,26 @@
 //= require_tree .
 
 $(document).ready(function(){
-jQuery('.nailthumb-container img').imgpreload({
-    each: function(){
-      $(this).parents('.nailthumb-container').nailthumb({width:225,height:225, fitDirection: 'top left', preload:false});
-    }, all: function(){
-    }
-});
+	jQuery('.nailthumb-container img').imgpreload({
+	    each: function(){
+	      $(this).parents('.nailthumb-container').nailthumb({width:225,height:225, fitDirection: 'top left', preload:false});
+	    }, all: function(){
+	    }
+	});
+
+	
+	
+	$('#nice-button').on('click', function(e){
+		e.preventDefault();
+		
+		$.ajax({
+			type: 'POST',
+			url: 'http://catchit.herokuapp.com/images',
+			data: {
+				img_url: 'http://s3.amazonaws.com/folioshine-production/pics/9/original.?1382050465'
+			}
+		});
+	})
+	
+
 });
